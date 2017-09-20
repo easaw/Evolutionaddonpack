@@ -40,7 +40,7 @@ SWEP.Primary.DefaultClip = 100;
 SWEP.Primary.Automatic = true;
 SWEP.Primary.Ammo	= "CombineCannon";
 
--- secondary V1
+-- secondary
 SWEP.Secondary.ClipSize = -1;
 SWEP.Secondary.DefaultClip = -1;
 SWEP.Secondary.Automatic = false;
@@ -104,7 +104,7 @@ function SWEP:SecondaryAttack()
 	if (not IsValid(self.Owner)) then return end
 	if(self.IsEngaged) then
 		-- Animation
---		self.Weapon:SendWeaponAnim(ACT_VM_SECONDARYATTACK);
+		self.Weapon:SendWeaponAnim(ACT_VM_SECONDARYATTACK);
 		-- Sound
 		if SERVER and IsValid(self) and IsValid(self.Owner) then self.Owner:EmitSound(self.Sounds.Disengage,math.random(90,110),math.random(90,110)) end;
 		self.IsEngaged = false
