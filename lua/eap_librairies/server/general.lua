@@ -29,25 +29,6 @@ if (not file.IsDir("eap","DATA")) then
    file.CreateDir("eap","DATA");
 end
 
-AddNPC( {
-	Name = "Combine Jaffa Soldier",
-	Class = "npc_combine_s",
-	Category = Category,
-	Model = "/models/players/jaffa.mdl",
-	Weapons = { "eap_weapon_zat" },
-	KeyValues = { SquadName = "overwatch", Numgrenades = 0 },
-} )
-
-AddNPC( {
-	Name = "Combine Jaffa Elite",
-	Class = "npc_combine_s",
-	Category = Category,
-	Model = "/models/players/snake.mdl",
-	Weapons = { "eap_weapon_zat" },
-	KeyValues = { Numgrenades = 0, SquadName = "overwatch" },
-	SpawnFlags = 16384
-}, "CombineElite" )
-
 --################# Loads the config @aVoN
 function Lib.LoadConfig(p)
    if(not IsValid(p) or p:IsAdmin() or game.SinglePlayer()) then
