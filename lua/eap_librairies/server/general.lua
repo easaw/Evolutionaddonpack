@@ -1,5 +1,24 @@
 MsgN("eap_librairies/server/general.lua")
 
+AddNPC( {
+	Name = "Combine Jaffa Soldier",
+	Class = "npc_combine_s",
+	Category = Category,
+	Model = "/models/players/jaffa.mdl",
+	Weapons = { "eap_weapon_zat" },
+	KeyValues = { SquadName = "overwatch", Numgrenades = 0 },
+} )
+
+AddNPC( {
+	Name = "Combine Jaffa Elite",
+	Class = "npc_combine_s",
+	Category = Category,
+	Model = "/models/players/snake.mdl",
+	Weapons = { "eap_weapon_zat" },
+	KeyValues = { Numgrenades = 0, SquadName = "overwatch" },
+	SpawnFlags = 16384
+}, "CombineElite" )
+
 --CAP Compatibility
 if(Lib.IsCapDetected and not ConVarExists("stargate_gatespawner_enabled"))then
    CreateConVar( "stargate_gatespawner_enabled", "0", FCVAR_ARCHIVE, "Stargate Gatespawner" )
