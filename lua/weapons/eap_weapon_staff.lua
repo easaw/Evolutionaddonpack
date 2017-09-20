@@ -41,16 +41,16 @@ SWEP.Primary.Automatic = true;
 SWEP.Primary.Ammo	= "CombineCannon";
 
 -- secondary V1
---SWEP.Secondary.ClipSize = -1;
---SWEP.Secondary.DefaultClip = -1;
---SWEP.Secondary.Automatic = false;
---SWEP.Secondary.Ammo = "none";
+SWEP.Secondary.ClipSize = -1;
+SWEP.Secondary.DefaultClip = -1;
+SWEP.Secondary.Automatic = false;
+SWEP.Secondary.Ammo = "none";
 	
 -- secondary V1.1 (to enable NPC use)
-SWEP.Secondary.ClipSize = -1;
-SWEP.Secondary.DefaultClip = 100;
-SWEP.Secondary.Automatic = true;
-SWEP.Secondary.Ammo	= "CombineCannon";
+--SWEP.Secondary.ClipSize = -1;
+--SWEP.Secondary.DefaultClip = 100;
+--SWEP.Secondary.Automatic = true;
+--SWEP.Secondary.Ammo	= "CombineCannon";
 
 SWEP.Spawnable = true
 
@@ -100,38 +100,38 @@ function SWEP:PrimaryAttack()
 end
 
 --################### Disengage @CryptAlchemy
---function SWEP:SecondaryAttack()
---	if (not IsValid(self.Owner)) then return end
---	if(self.IsEngaged) then
+function SWEP:SecondaryAttack()
+	if (not IsValid(self.Owner)) then return end
+	if(self.IsEngaged) then
 		-- Animation
 --		self.Weapon:SendWeaponAnim(ACT_VM_SECONDARYATTACK);
 		-- Sound
---		if SERVER and IsValid(self) and IsValid(self.Owner) then self.Owner:EmitSound(self.Sounds.Disengage,math.random(90,110),math.random(90,110)) end;
---		self.IsEngaged = false
---		return true;
---	else
+		if SERVER and IsValid(self) and IsValid(self.Owner) then self.Owner:EmitSound(self.Sounds.Disengage,math.random(90,110),math.random(90,110)) end;
+		self.IsEngaged = false
+		return true;
+	else
 		-- Animation
---		self.Weapon:SendWeaponAnim(ACT_VM_DRAW);
+		self.Weapon:SendWeaponAnim(ACT_VM_DRAW);
 		-- Muzzle
---		self:Muzzle();
---		if SERVER and IsValid(self) and IsValid(self.Owner) then self.Owner:EmitSound(self.Sounds.Deploy,math.random(90,110),math.random(90,110)) end;
---		self.IsEngaged = true
---		return true;
---	end
---end
+		self:Muzzle();
+		if SERVER and IsValid(self) and IsValid(self.Owner) then self.Owner:EmitSound(self.Sounds.Deploy,math.random(90,110),math.random(90,110)) end;
+		self.IsEngaged = true
+		return true;
+	end
+end
 
 --################### Shoot @aVoN - activate secondary as primary for NPCS
-function SWEP:SecondaryAttack()
-	if(not IsValid(self.Owner) or (self.Owner:IsPlayer() and self.Owner:GetAmmoCount(self.Primary.Ammo) <= 0)) then return end;
-	if(not self.IsEngaged) then return end;
-	self.Weapon:SendWeaponAnim(ACT_VM_PRIMARYATTACK);
+--function SWEP:SecondaryAttack()
+--	if(not IsValid(self.Owner) or (self.Owner:IsPlayer() and self.Owner:GetAmmoCount(self.Primary.Ammo) <= 0)) then return end;
+--	if(not self.IsEngaged) then return end;
+--	self.Weapon:SendWeaponAnim(ACT_VM_PRIMARYATTACK);
 	-- Muzzle
-	self:Muzzle();
+--	self:Muzzle();
 	-- Shot
-	if SERVER then self:SVPrimaryAttack() end;
-	self.Weapon:SetNextPrimaryFire(CurTime()+0.4);
-	return true;
-end
+--	if SERVER then self:SVPrimaryAttack() end;
+--	self.Weapon:SetNextPrimaryFire(CurTime()+0.4);
+--	return true;
+--end
 	
 --################### We don't this stuffz @CryptAlchemy
 function SWEP:ShootEffects() return false end;
